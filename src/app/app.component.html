@@ -1,0 +1,385 @@
+<div class="page-shell">
+  <div class="bg-orb orb-a"></div>
+  <div class="bg-orb orb-b"></div>
+  <div class="bg-grid"></div>
+
+  <header class="topbar reveal-on-scroll">
+    <a class="brand" href="#home">
+      <span class="brand-mark">MM</span>
+      <span class="brand-copy">
+        <strong>Marcos Menezes</strong>
+        <small>Angular • Backend • Full Stack</small>
+      </span>
+    </a>
+
+    <nav class="nav">
+      @for (link of navLinks; track link.href) {
+        <a [href]="link.href">{{ link.label }}</a>
+      }
+    </nav>
+  </header>
+
+  <main class="layout">
+    <section class="hero panel reveal-on-scroll" id="home">
+      <div class="hero-copy">
+        <span class="eyebrow">Portfolio em Angular baseado no meu curriculo</span>
+        <h1>
+          Angular na interface.
+          <span>Backend forte por tras.</span>
+        </h1>
+        <p class="hero-text">
+          {{ profile.summary }}
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" [href]="'mailto:' + profile.email">Entrar em contato</a>
+          <a class="btn btn-secondary" [href]="profile.linkedin" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn btn-secondary" [href]="profile.github" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+
+        <div class="stats">
+          @for (stat of stats; track stat.label) {
+            <article class="stat-card">
+              <strong>{{ stat.value }}</strong>
+              <span>{{ stat.label }}</span>
+            </article>
+          }
+        </div>
+      </div>
+
+      <aside class="hero-side">
+        <div class="profile-card">
+          <span class="mini-label">{{ profile.location }} • {{ profile.languages[1] }}</span>
+          <h2>Full Stack com foco em produto</h2>
+          <p>
+            Experiencia com Angular, React, .NET Web API, Azure, dashboards, integracoes,
+            visao computacional e entrega de software orientada a problema real.
+          </p>
+        </div>
+
+        <div class="terminal-card">
+          <div class="terminal-head">
+            <span></span><span></span><span></span>
+          </div>
+          <pre ngNonBindable>stack.current = {{
+  frontend: ['Angular', 'React', 'Tailwind'],
+  backend: ['C#', '.NET', 'PHP', 'Python'],
+  cloud: ['Azure', 'Azure DevOps'],
+  focus: 'APIs, integracoes e produto'
+}}</pre>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section-block reveal-on-scroll" id="about">
+      <div class="section-copy">
+        <span class="eyebrow">Resumo</span>
+        <h2>Portfólio em Angular, conteúdo vindo do currículo e apresentação com mais personalidade.</h2>
+        <p>
+          A ideia aqui é mostrar seu perfil do jeito certo: não como uma lista de buzzwords,
+          mas como um desenvolvedor que já transitou entre suporte, manutenção, backend,
+          frontend e entrega de produto.
+        </p>
+      </div>
+
+      <div class="highlights">
+        @for (item of highlights; track item.title) {
+          <article class="panel highlight-card">
+            <span class="card-index">{{ item.index }}</span>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+          </article>
+        }
+      </div>
+    </section>
+
+    <section class="section-block reveal-on-scroll" id="stack">
+      <div class="section-copy split">
+        <div>
+          <span class="eyebrow">Stack principal</span>
+          <h2>Angular entra como vitrine, mas o repertório é de ponta a ponta.</h2>
+        </div>
+        <p>
+          Organizei a stack em grupos para ficar mais legível e mais alinhada com o que seu currículo realmente comunica.
+        </p>
+      </div>
+
+      <article class="panel stack-cloud">
+        @for (group of stackGroups; track group.title; let groupIndex = $index) {
+          <div class="cloud-row" [class.reverse]="groupIndex === 1">
+            <div class="cloud-row__label">
+              <small>{{ group.title }}</small>
+            </div>
+            <div class="cloud-row__viewport">
+              <div class="cloud-row__track">
+                @for (loop of [0, 1]; track loop) {
+                  <div class="cloud-row__cluster">
+                    @for (item of group.items; track item) {
+                      <span class="chip">{{ item }}</span>
+                    }
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        }
+      </article>
+    </section>
+
+    <section class="section-block projects-section reveal-on-scroll" id="projects">
+      <div class="section-copy split">
+        <div>
+          <span class="eyebrow">Projetos</span>
+          <h2>Seleção orientada a backend, aprendizado técnico e utilidade prática.</h2>
+        </div>
+        <p>
+          O painel muda conforme o projeto selecionado. Isso dá interatividade sem virar efeito gratuito.
+        </p>
+      </div>
+
+      <div class="projects-layout">
+        <div class="project-list">
+          @for (project of projects; track project.slug) {
+            <article
+              class="panel project-card"
+              [class.project-card--featured]="project.slug === 'studybuddyhub'"
+              [class.is-active]="selectedProject().slug === project.slug"
+              (mouseenter)="selectProject(project.slug)"
+              (focusin)="selectProject(project.slug)"
+              (click)="selectProject(project.slug)"
+              tabindex="0"
+            >
+              <div class="project-card__head">
+                <small>{{ project.slug === 'studybuddyhub' ? 'Projeto em destaque / produção' : project.category }}</small>
+                <h3>{{ project.title }}</h3>
+              </div>
+              <p>{{ project.summary }}</p>
+              @if (project.slug === 'studybuddyhub') {
+                <a
+                  class="project-live-link"
+                  [href]="project.link"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  lhamiumstudy.worcode.com.br
+                </a>
+              }
+              @if (project.showcaseLink) {
+                <a
+                  class="project-live-link"
+                  [href]="project.showcaseLink"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {{ project.showcaseLabel }}
+                </a>
+              }
+              <div class="chip-list compact">
+                @for (tag of project.tags; track tag) {
+                  <span class="chip">{{ tag }}</span>
+                }
+              </div>
+            </article>
+          }
+        </div>
+
+        <article class="panel project-preview">
+          <div class="preview-header">
+            <span>{{ selectedProject().title }}</span>
+            <small>{{ selectedProject().previewLabel }}</small>
+          </div>
+
+          <div class="preview-screen">
+            @for (metric of selectedProject().metrics; track metric.label) {
+              <div class="metric-box">
+                <strong>{{ metric.value }}</strong>
+                <span>{{ metric.label }}</span>
+              </div>
+            }
+          </div>
+
+          <div class="preview-copy">
+            <small class="preview-kicker">{{ selectedProject().category }}</small>
+            <h3>{{ selectedProject().headline }}</h3>
+            <p>{{ selectedProject().description }}</p>
+            @if (selectedProject().gallery; as gallery) {
+              <div class="project-gallery">
+                @for (image of gallery; track image.src) {
+                  <figure
+                    class="gallery-shot"
+                    (click)="openGalleryImage(image)"
+                    (keydown.enter)="openGalleryImage(image)"
+                    (keydown.space)="openGalleryImage(image); $event.preventDefault()"
+                    tabindex="0"
+                  >
+                    <img [src]="image.src" [alt]="image.alt" loading="lazy" />
+                    <figcaption>{{ image.label }}</figcaption>
+                  </figure>
+                }
+              </div>
+            }
+            @if (selectedProject().slug === 'studybuddyhub') {
+              <a
+                class="project-live-link project-live-link--large"
+                [href]="selectedProject().link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Acessar versão online: lhamiumstudy.worcode.com.br
+              </a>
+            }
+            @if (selectedProject().showcaseLink) {
+              <a
+                class="project-live-link project-live-link--large"
+                [href]="selectedProject().showcaseLink"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {{ selectedProject().showcaseLabel }}
+              </a>
+            }
+            <ul>
+              @for (point of selectedProject().points; track point) {
+                <li>{{ point }}</li>
+              }
+            </ul>
+            <a class="btn btn-secondary" [href]="selectedProject().link" target="_blank" rel="noreferrer">
+              Ver repositorio
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block reveal-on-scroll" id="experience">
+      <div class="section-copy split">
+        <div>
+          <span class="eyebrow">Experiencia</span>
+          <h2>Trajetória que combina operação, suporte e desenvolvimento.</h2>
+        </div>
+        <p>
+          Isso ajuda a vender maturidade técnica e leitura de contexto, não só stack.
+        </p>
+      </div>
+
+      <div class="timeline">
+        @for (job of experiences; track job.company + job.role) {
+          <article class="panel timeline-card">
+            <small>{{ job.period }}</small>
+            <h3>{{ job.role }}</h3>
+            <strong>{{ job.company }}</strong>
+            <p>{{ job.location }}</p>
+            <ul>
+              @for (point of job.points; track point) {
+                <li>{{ point }}</li>
+              }
+            </ul>
+          </article>
+        }
+      </div>
+    </section>
+
+    <section class="section-block dual-grid reveal-on-scroll">
+      <article class="panel info-card">
+        <span class="eyebrow">Formacao</span>
+        <h2>Base acadêmica em computação e formação técnica recente.</h2>
+        <div class="list-block">
+          @for (item of education; track item.title) {
+            <div class="list-item">
+              <strong>{{ item.title }}</strong>
+              <span>{{ item.institution }}</span>
+              <small>{{ item.period }}</small>
+            </div>
+          }
+        </div>
+      </article>
+
+      <article class="panel info-card">
+        <span class="eyebrow">Idiomas e soft skills</span>
+        <h2>Boa combinação entre comunicação, adaptação e execução.</h2>
+        <div class="pill-columns">
+          <div>
+            <strong>Idiomas</strong>
+            <div class="chip-list">
+              @for (item of profile.languages; track item) {
+                <span class="chip">{{ item }}</span>
+              }
+            </div>
+          </div>
+          <div>
+            <strong>Soft skills</strong>
+            <div class="chip-list">
+              @for (item of softSkills; track item) {
+                <span class="chip">{{ item }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section-block reveal-on-scroll" id="contact">
+      <div class="contact-grid">
+        <article class="panel contact-card">
+          <span class="eyebrow">Contato</span>
+          <h2>Se quiser, o próximo passo já pode ser transformar isso em portfólio deployado.</h2>
+          <p>
+            Esta versão já nasce em Angular. Depois dá para separar em componentes, consumir dados de um arquivo JSON
+            ou integrar com CMS sem reescrever a base.
+          </p>
+
+          <div class="contact-links">
+            <a [href]="'mailto:' + profile.email">
+              <span>Email</span>
+              <strong>{{ profile.email }}</strong>
+            </a>
+            <a [href]="profile.linkedin" target="_blank" rel="noreferrer">
+              <span>LinkedIn</span>
+              <strong>linkedin.com/in/marcosmenezzez</strong>
+            </a>
+            <a [href]="profile.github" target="_blank" rel="noreferrer">
+              <span>GitHub</span>
+              <strong>github.com/marcosmenezzes</strong>
+            </a>
+          </div>
+        </article>
+
+        <article class="panel availability-card">
+          <span class="eyebrow">Disponibilidade</span>
+          <div class="availability-list">
+            <div>
+              <strong>Local</strong>
+              <span>{{ profile.location }}</span>
+            </div>
+            <div>
+              <strong>Telefone</strong>
+              <span>{{ profile.phone }}</span>
+            </div>
+            <div>
+              <strong>Foco atual</strong>
+              <span>Angular, backend .NET, APIs e projetos web</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  @if (activeGalleryImage(); as image) {
+    <div class="gallery-modal" (click)="closeGalleryImage()">
+      <div
+        class="gallery-modal__dialog"
+        (click)="$event.stopPropagation()"
+        role="dialog"
+        aria-modal="true"
+        [attr.aria-label]="image.label"
+      >
+        <button class="gallery-modal__close" type="button" (click)="closeGalleryImage()">
+          Fechar
+        </button>
+        <img [src]="image.src" [alt]="image.alt" />
+        <div class="gallery-modal__caption">{{ image.label }}</div>
+      </div>
+    </div>
+  }
+</div>
