@@ -811,27 +811,131 @@ pre {
 @media (max-width: 760px) {
   .page-shell {
     width: min(100vw - 20px, 1180px);
-    padding-top: 14px;
+    padding-top: 12px;
+    padding-bottom: 28px;
   }
 
   .topbar {
     position: static;
-    border-radius: 28px;
-    padding: 18px;
+    align-items: flex-start;
+    flex-direction: column;
+    border-radius: 24px;
+    padding: 14px;
+    margin-bottom: 16px;
+  }
+
+  .brand {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+  }
+
+  .brand-copy strong {
+    font-size: 0.95rem;
+  }
+
+  .brand-copy small {
+    font-size: 0.78rem;
   }
 
   .nav {
+    width: 100%;
     justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav a {
+    flex: 0 0 auto;
+    padding: 9px 12px;
+    font-size: 0.88rem;
+  }
+
+  .panel {
+    border-radius: 24px;
+  }
+
+  .hero {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .section-block {
+    margin-top: 14px;
+  }
+
+  .section-copy {
+    margin-bottom: 12px;
+  }
+
+  .section-copy h2 {
+    margin-top: 14px;
+    line-height: 1.02;
+  }
+
+  .section-copy.split,
+  .projects-section .section-copy.split {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .projects-section .section-copy p {
+    max-width: 100%;
+    padding-bottom: 0;
   }
 
   h1 {
     max-width: 100%;
-    font-size: clamp(2.6rem, 14vw, 4.5rem);
+    margin-top: 14px;
+    font-size: clamp(2.2rem, 11vw, 3.4rem);
+    line-height: 0.96;
   }
 
-  .preview-screen,
+  .hero-text,
+  .preview-copy p,
+  .project-card p,
+  .timeline-card p,
+  .info-card p,
+  .preview-copy ul,
+  .timeline-card ul {
+    font-size: 0.94rem;
+    line-height: 1.62;
+  }
+
+  .hero-actions,
   .stats {
-    grid-template-columns: 1fr;
+    margin-top: 18px;
+    gap: 10px;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-actions .btn:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .btn {
+    width: 100%;
+    min-height: 44px;
+    padding: 11px 14px;
+    font-size: 0.92rem;
   }
 
   .hero-copy,
@@ -842,24 +946,159 @@ pre {
   .timeline-card,
   .highlight-card,
   .info-card {
-    padding: 20px;
+    padding: 16px;
   }
 
   .stack-cloud {
-    padding: 18px;
+    gap: 12px;
+    padding: 16px;
   }
 
   .projects-section .section-copy h2 {
-    font-size: clamp(2rem, 11vw, 3.3rem);
+    font-size: clamp(1.85rem, 10vw, 2.8rem);
     line-height: 0.98;
   }
 
   .preview-screen {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .stat-card,
+  .metric-box,
+  .list-item,
+  .availability-list div,
+  .contact-links a {
+    padding: 13px 14px;
+    border-radius: 16px;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stat-card {
+    min-width: 0;
+  }
+
+  .stat-card strong,
+  .metric-box strong {
+    margin-bottom: 4px;
+    font-size: 1.05rem;
+  }
+
+  .profile-card {
+    min-height: auto;
+    padding: 18px;
+  }
+
+  .profile-card h2 {
+    margin: 14px 0 10px;
+    font-size: clamp(1.6rem, 8vw, 2.25rem);
+  }
+
+  .terminal-card {
+    padding: 14px;
+  }
+
+  pre {
+    font-size: 0.8rem;
+    line-height: 1.55;
+  }
+
+  .project-list {
+    gap: 10px;
+  }
+
+  .project-card {
+    padding: 16px;
+  }
+
+  .project-card__head {
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .highlight-card h3,
+  .project-card h3,
+  .preview-copy h3,
+  .timeline-card h3 {
+    margin: 12px 0 8px;
+    font-size: 1.15rem;
+  }
+
+  .project-card--featured h3 {
+    font-size: 1.35rem;
+  }
+
+  .project-live-link,
+  .project-live-link--large {
+    margin-bottom: 10px;
+    padding: 8px 11px;
+    font-size: 0.82rem;
+  }
+
+  .project-preview {
+    gap: 14px;
+  }
+
+  .preview-header {
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 10px;
+    font-size: 0.88rem;
+  }
+
+  .preview-copy {
+    gap: 10px;
+  }
+
+  .preview-copy h3 {
+    font-size: clamp(1.45rem, 8vw, 2rem);
+    line-height: 1.04;
+  }
+
+  .chip-list {
+    gap: 8px;
+  }
+
+  .chip,
+  .compact .chip {
+    padding: 7px 10px;
+    font-size: 0.78rem;
   }
 
   .project-gallery {
+    gap: 10px;
     grid-template-columns: 1fr;
+  }
+
+  .gallery-shot {
+    border-radius: 18px;
+  }
+
+  .gallery-shot figcaption {
+    padding: 0 10px 10px;
+    font-size: 0.72rem;
+  }
+
+  .contact-links {
+    margin-top: 16px;
+  }
+
+  .contact-links a {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .availability-list,
+  .pill-columns {
+    gap: 12px;
+    margin-top: 16px;
   }
 
   .gallery-modal {
@@ -869,6 +1108,70 @@ pre {
   .gallery-modal__dialog {
     width: calc(100vw - 20px);
     padding: 14px;
+  }
+}
+
+@media (max-width: 520px) {
+  .page-shell {
+    width: calc(100vw - 16px);
+  }
+
+  .hero-actions,
+  .stats,
+  .preview-screen {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy,
+  .hero-side,
+  .project-preview,
+  .contact-card,
+  .availability-card,
+  .timeline-card,
+  .highlight-card,
+  .info-card,
+  .project-card {
+    padding: 14px;
+  }
+
+  .stack-cloud,
+  .profile-card,
+  .terminal-card {
+    padding: 14px;
+  }
+
+  .eyebrow {
+    padding: 8px 11px;
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+  }
+
+  .mini-label,
+  .preview-kicker,
+  .timeline-card small,
+  .project-card small,
+  .cloud-row__label small {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+  }
+
+  .section-copy h2,
+  .projects-section .section-copy h2 {
+    max-width: 100%;
+  }
+
+  .projects-section .section-copy h2 {
+    font-size: clamp(1.55rem, 9vw, 2.1rem);
+    line-height: 1;
+  }
+
+  .gallery-modal__dialog {
+    border-radius: 22px;
+  }
+
+  .gallery-modal__close {
+    padding: 7px 10px;
+    font-size: 0.82rem;
   }
 }
 
