@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, computed, inject, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 
 type Project = {
   slug: string;
@@ -30,8 +30,8 @@ type GalleryImage = {
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements AfterViewInit {
-  private readonly host = inject(ElementRef<HTMLElement>);
+export class AppComponent {
+  readonly currentYear = new Date().getFullYear();
 
   readonly navLinks = [
     { label: 'Sobre', href: '#about' },
@@ -186,6 +186,32 @@ export class AppComponent implements AfterViewInit {
         { value: 'PHP', label: 'Base da implementação' }
       ],
       link: 'https://github.com/marcosmenezzes/api-php'
+    },
+    {
+      slug: 'portfolio',
+      title: 'Portfólio',
+      category: 'Projeto pessoal',
+      summary: 'Portfólio pessoal desenvolvido em Angular para apresentar trajetória, habilidades e projetos como desenvolvedor Full Stack.',
+      headline: 'Uma apresentação simples para projetos e experiências.',
+      description: 'Interface responsiva criada em Angular para reunir trajetória profissional, formação, stack e projetos desenvolvidos.',
+      previewLabel: 'Angular + SCSS',
+      tags: ['Angular', 'SCSS', 'TypeScript'],
+      points: ['Layout responsivo.', 'Seções de experiência, formação e contato.', 'Projetos conectados ao GitHub.'],
+      metrics: [],
+      link: 'https://github.com/marcosmenezzes/Portf-lio-'
+    },
+    {
+      slug: 'chatgpt-stealth-assistant',
+      title: 'ChatGPT Stealth Assistant',
+      category: 'Ferramenta de produtividade',
+      summary: 'Ferramenta para integrar o acesso ao ChatGPT diretamente ao fluxo de trabalho do macOS.',
+      headline: 'IA acessível sem interromper o fluxo de trabalho.',
+      description: 'Projeto experimental de produtividade voltado a tornar o uso de um assistente de IA mais rápido e discreto no sistema operacional.',
+      previewLabel: 'Python + macOS',
+      tags: ['Python', 'macOS', 'IA'],
+      points: ['Acesso rápido ao assistente.', 'Integração com o fluxo de trabalho.', 'Foco em produtividade.'],
+      metrics: [],
+      link: 'https://github.com/marcosmenezzes/chatgpt-stealth-assistant'
     }
   ];
 
@@ -250,27 +276,4 @@ export class AppComponent implements AfterViewInit {
     this.activeGalleryImage.set(null);
   }
 
-  ngAfterViewInit(): void {
-    const elements = Array.from(
-      this.host.nativeElement.querySelectorAll('.reveal-on-scroll')
-    ) as HTMLElement[];
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            return;
-          }
-
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        });
-      },
-      {
-        threshold: 0.14,
-        rootMargin: '0px 0px -8% 0px'
-      }
-    );
-
-    elements.forEach((element: HTMLElement) => observer.observe(element));
-  }
 }
