@@ -30,7 +30,6 @@
       <div class="entry-grid">
         @for (entry of sectionEntries(); track entry.slug) {
           <article>
-            <time>{{ entry.date }}</time>
             <h2><a [routerLink]="['/', section(), entry.slug]">{{ entry.title }}</a></h2>
             <p>{{ entry.summary }} <a class="arrow" [routerLink]="['/', section(), entry.slug]" [attr.aria-label]="'Ler ' + entry.title">→</a></p>
           </article>
