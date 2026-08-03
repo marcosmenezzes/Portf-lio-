@@ -24,7 +24,7 @@ const entries: Entry[] = [
     summary: 'Um espaço para registrar ideias ainda em formação, sem esperar que elas estejam perfeitamente resolvidas.',
     paragraphs: [
       'Este é um texto de exemplo. Quero usar este espaço para organizar pensamentos sobre tecnologia, trabalho, criatividade e as coisas que encontro pelo caminho.',
-      'Escrever em público é também uma forma de aprender: uma ideia fica mais nítida quando preciso explicá-la para outra pessoa. Substitua estes parágrafos pelo seu primeiro relato.'
+      'Escrever em público é também uma forma de aprender: uma ideia fica mais nítida quando preciso explicá-la para outra pessoa.'
     ]
   },
   
@@ -37,7 +37,7 @@ const entries: Entry[] = [
     summary: 'Requisitos úteis explicam a necessidade, os limites e como reconhecer que o resultado funciona.',
     paragraphs: [
       'Uma lista de funcionalidades não substitui o entendimento do problema. Perguntas sobre usuários, contexto e critérios de aceite transformam pedidos vagos em decisões verificáveis.',
-      'Esta área pode receber resumos de aula, referências e exemplos dos seus projetos.'
+      'Esta área pode receber resumos de aula, referências e exemplos dos meus projetos.'
     ]
   }
 ];
