@@ -1,0 +1,19 @@
+:host { display: block; color: #20211f; }
+.about-page { width: min(1280px, calc(100% - 36px)); margin: auto; padding-bottom: 30px; }
+h1 { max-width: 870px; margin: 90px 0; font-size: clamp(4rem, 10vw, 8rem); font-weight: 500; letter-spacing: -.09em; line-height: .9; }
+.about-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 54px; align-items: start; }
+.about-copy { max-width: 640px; }
+.about-copy > p { margin: 0 0 25px; font-size: 1.05rem; line-height: 1.55; }
+a { color: inherit; text-decoration-color: #c5c1b8; text-underline-offset: 3px; }
+a:hover { color: #a45f2a; }
+aside { margin-top: 54px; }
+aside h2 { margin: 0 0 20px; font-size: 1.05rem; font-weight: 500; }
+aside p { margin: 0 0 20px; color: #686a66; }
+figure { margin: 0; }
+figure img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; object-position: center 42%; }
+figcaption { margin-top: 8px; color: #777873; font-size: .8rem; }
+@media (max-width: 800px) {
+  h1 { margin: 80px 0; }
+  .about-grid { grid-template-columns: 1fr; gap: 54px; }
+  figure { order: -1; }
+}

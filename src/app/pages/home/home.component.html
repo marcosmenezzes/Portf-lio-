@@ -1,17 +1,9 @@
 <div class="site-shell">
-  <header class="site-header">
-    <a class="wordmark" href="#home">MM</a>
-    <nav aria-label="Navegação principal">
-      @for (link of navLinks; track link.href) {
-        <a [href]="link.href">{{ link.label }}</a>
-      }
-    </nav>
-  </header>
-
   <main>
     <section class="intro" id="home">
-      <p class="kicker">Marcos Menezes — Desenvolvedor Full Stack</p>
-      <h1>Construo produtos digitais com código claro e propósito.</h1>
+    
+      <h1>As máquinas me surpreendem muito frequentemente.</h1>
+      <p class="kicker">- Alan Turing</p>
       <p class="lead">{{ profile.summary }}</p>
       <div class="links">
         <a [href]="'mailto:' + profile.email">Vamos conversar <span>↗</span></a>
@@ -20,10 +12,10 @@
       </div>
     </section>
 
-    <section class="now" id="about">
+    <section class="now" id="now">
       <div>
         <p class="label">Agora</p>
-        <p>Aberto a oportunidades e projetos em Angular, backend .NET, APIs e aplicações web.</p>
+        <p>Aberto a oportunidades e projetos em Angular, React, backend .NET, APIs e aplicações web.</p>
       </div>
       <div>
         <p class="label">Base</p>

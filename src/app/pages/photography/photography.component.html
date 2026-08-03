@@ -1,0 +1,52 @@
+<div class="photography-page">
+  <main>
+    @if (selectedCollection(); as collection) {
+      <section class="collection-intro">
+        <a routerLink="/photography">← Todas as coleções</a>
+        <h1>{{ collection.title }}</h1>
+        <p>{{ collection.description }}</p>
+      </section>
+
+      <section class="collection-grid" [attr.aria-label]="'Fotos de ' + collection.title">
+        @for (photo of collection.photos; track photo; let index = $index) {
+          <figure class="collection-photo">
+            <img
+              [src]="photo"
+              [alt]="collection.title + ' — foto ' + (index + 1)"
+              [attr.loading]="index === 0 ? 'eager' : 'lazy'"
+              [attr.fetchpriority]="index === 0 ? 'high' : null"
+              decoding="async"
+            />
+          </figure>
+        }
+      </section>
+    } @else {
+      <section class="photo-intro">
+        <h1>Fotografias</h1>
+        <p>Um hobby que me ensinou a ver beleza nos detalhes e a acalmar minha alma.</p>
+      </section>
+
+      <section class="collection-list" aria-label="Coleções de fotografias">
+        @for (collection of collections; track collection.slug; let first = $first) {
+          <a class="collection-card" [routerLink]="['/photography', collection.slug]">
+            <img
+              [src]="collection.cover"
+              [alt]="'Capa da coleção ' + collection.title"
+              [width]="collection.coverWidth"
+              [height]="collection.coverHeight"
+              [attr.loading]="first ? 'eager' : 'lazy'"
+              [attr.fetchpriority]="first ? 'high' : null"
+              decoding="async"
+            />
+            <h2>{{ collection.title }} <span>→</span></h2>
+          </a>
+        }
+      </section>
+    }
+  </main>
+
+  <footer class="photo-footer">
+    <a routerLink="/about">Sobre mim ↗</a>
+    <span>© 2026 Marcos Menezes</span>
+  </footer>
+</div>
