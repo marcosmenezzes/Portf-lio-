@@ -2,17 +2,17 @@
   <main>
     @if (selectedCollection(); as collection) {
       <section class="collection-intro">
-        <a routerLink="/photography">← Todas as coleções</a>
-        <h1>{{ collection.title }}</h1>
-        <p>{{ collection.description }}</p>
+        <a routerLink="/photography">{{ language.text('← Todas as coleções') }}</a>
+        <h1>{{ language.text(collection.title) }}</h1>
+        <p>{{ language.text(collection.description) }}</p>
       </section>
 
-      <section class="collection-grid" [attr.aria-label]="'Fotos de ' + collection.title">
+      <section class="collection-grid" [attr.aria-label]="language.text('Fotos de') + ' ' + language.text(collection.title)">
         @for (photo of collection.photos; track photo; let index = $index) {
           <figure class="collection-photo">
             <img
               [src]="photo"
-              [alt]="collection.title + ' — foto ' + (index + 1)"
+              [alt]="language.text(collection.title) + ' — ' + language.text('foto') + ' ' + (index + 1)"
               [attr.loading]="index === 0 ? 'eager' : 'lazy'"
               [attr.fetchpriority]="index === 0 ? 'high' : null"
               decoding="async"
@@ -22,23 +22,23 @@
       </section>
     } @else {
       <section class="photo-intro">
-        <h1>Fotografias</h1>
-        <p>Um hobby que me ensinou a ver beleza nos detalhes e a acalmar minha alma.</p>
+        <h1>{{ language.text('Fotografias') }}</h1>
+        <p>{{ language.text('Um hobby que me ensinou a ver beleza nos detalhes e a acalmar minha alma.') }}</p>
       </section>
 
-      <section class="collection-list" aria-label="Coleções de fotografias">
+      <section class="collection-list" [attr.aria-label]="language.text('Coleções de fotografias')">
         @for (collection of collections; track collection.slug; let first = $first) {
           <a class="collection-card" [routerLink]="['/photography', collection.slug]">
             <img
               [src]="collection.cover"
-              [alt]="'Capa da coleção ' + collection.title"
+              [alt]="language.text('Capa da coleção') + ' ' + language.text(collection.title)"
               [width]="collection.coverWidth"
               [height]="collection.coverHeight"
               [attr.loading]="first ? 'eager' : 'lazy'"
               [attr.fetchpriority]="first ? 'high' : null"
               decoding="async"
             />
-            <h2>{{ collection.title }} <span>→</span></h2>
+            <h2>{{ language.text(collection.title) }} <span>→</span></h2>
           </a>
         }
       </section>
@@ -46,7 +46,7 @@
   </main>
 
   <footer class="photo-footer">
-    <a routerLink="/about">Sobre mim ↗</a>
+    <a routerLink="/about">{{ language.text('Sobre mim ↗') }}</a>
     <span>© 2026 Marcos Menezes</span>
   </footer>
 </div>

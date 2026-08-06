@@ -1,6 +1,7 @@
 import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { LanguageService } from '../../shared/language.service';
 
 type PhotoCollection = {
   slug: string;
@@ -27,6 +28,7 @@ const copies = (folder: string, last: number, missing: number[] = []) => [
   styleUrl: './photography.component.scss'
 })
 export class PhotographyComponent {
+  readonly language = inject(LanguageService);
   private readonly route = inject(ActivatedRoute);
   private readonly params = toSignal(this.route.paramMap, { initialValue: this.route.snapshot.paramMap });
 

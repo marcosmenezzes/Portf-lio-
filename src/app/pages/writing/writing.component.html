@@ -2,36 +2,36 @@
   @if (selectedEntry(); as entry) {
     <article class="entry">
       <header class="entry-header">
-        <p class="eyebrow">{{ section() === 'blog' ? 'Blog' : 'Caderno' }}</p>
-        <h1>{{ entry.title }}</h1>
-        <time>{{ entry.date }}</time>
+        <p class="eyebrow">{{ section() === 'blog' ? 'Blog' : language.text('Caderno') }}</p>
+        <h1>{{ language.text(entry.title) }}</h1>
+        <time>{{ language.text(entry.date) }}</time>
       </header>
 
       <div class="entry-body">
-        <p class="intro">{{ entry.summary }}</p>
+        <p class="intro">{{ language.text(entry.summary) }}</p>
         @for (paragraph of entry.paragraphs; track paragraph) {
-          <p>{{ paragraph }}</p>
+          <p>{{ language.text(paragraph) }}</p>
         }
       </div>
 
       <aside class="next-entry">
         @if (nextEntry(); as next) {
-          <p class="eyebrow">Próximo</p>
-          <a [routerLink]="['/', section(), next.slug]">{{ next.title }} →</a>
+          <p class="eyebrow">{{ language.text('Próximo') }}</p>
+          <a [routerLink]="['/', section(), next.slug]">{{ language.text(next.title) }} →</a>
         }
-        <a class="archive" [routerLink]="['/', section()]">Voltar para todos</a>
+        <a class="archive" [routerLink]="['/', section()]">{{ language.text('Voltar para todos') }}</a>
       </aside>
     </article>
   } @else {
     <section class="archive-page">
-      <p class="eyebrow">{{ section() === 'blog' ? 'Blog' : 'Caderno' }}</p>
+      <p class="eyebrow">{{ section() === 'blog' ? 'Blog' : language.text('Caderno') }}</p>
       <h1>{{ heading() }}</h1>
 
       <div class="entry-grid">
         @for (entry of sectionEntries(); track entry.slug) {
           <article>
-            <h2><a [routerLink]="['/', section(), entry.slug]">{{ entry.title }}</a></h2>
-            <p>{{ entry.summary }} <a class="arrow" [routerLink]="['/', section(), entry.slug]" [attr.aria-label]="'Ler ' + entry.title">→</a></p>
+            <h2><a [routerLink]="['/', section(), entry.slug]">{{ language.text(entry.title) }}</a></h2>
+            <p>{{ language.text(entry.summary) }} <a class="arrow" [routerLink]="['/', section(), entry.slug]" [attr.aria-label]="language.text('Ler') + ' ' + language.text(entry.title)">→</a></p>
           </article>
         }
       </div>

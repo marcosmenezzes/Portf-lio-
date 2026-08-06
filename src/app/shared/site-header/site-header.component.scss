@@ -1,11 +1,14 @@
 :host { display: block; }
 .site-header { padding: 18px 0; }
-.header-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 54px; width: min(1280px, calc(100% - 36px)); margin: auto; }
+.header-inner { display: grid; grid-template-columns: 1fr 1fr auto; gap: 28px 54px; width: min(1280px, calc(100% - 36px)); margin: auto; }
 a { color: #20211f; text-decoration: none; }
 .wordmark { font-size: 1rem; font-weight: 500; letter-spacing: -.03em; }
 nav { display: flex; flex-wrap: wrap; gap: 8px 18px; }
 nav a { color: #777873; font-size: .9rem; }
 nav a:hover, nav a.active { color: #a45f2a; }
+.language-toggle { align-self: start; border: 0; border-bottom: 1px solid #c9c8c1; padding: 0 0 3px; background: none; color: #777873; cursor: pointer; font: inherit; font-size: .78rem; white-space: nowrap; }
+.language-toggle:hover { color: #a45f2a; }
 @media (max-width: 800px) {
-  .header-inner { grid-template-columns: 1fr; gap: 12px; }
+  .header-inner { grid-template-columns: 1fr auto; gap: 12px; }
+  nav { grid-column: 1 / -1; grid-row: 2; }
 }

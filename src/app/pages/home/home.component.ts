@@ -1,4 +1,5 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
+import { LanguageService } from '../../shared/language.service';
 
 type Project = {
   slug: string;
@@ -31,6 +32,7 @@ type GalleryImage = {
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  readonly language = inject(LanguageService);
   readonly currentYear = new Date().getFullYear();
 
   readonly profile = {
@@ -212,11 +214,21 @@ export class HomeComponent {
       role: 'Desenvolvedor Full Stack',
       company: 'Fartec Sistemas',
       location: 'Linhares, ES',
-      period: '2025 – Abril de 2026',
+      period: '2025 – 2026',
       points: [
         'Atuação em projetos de clientes desde planejamento e arquitetura até implantação e manutenção.',
         'Entrega de melhorias, correções, otimizações e novas funcionalidades web.',
         'Gestão de tarefas e fluxo com Azure DevOps.'
+      ]
+    },
+    {
+      role: 'Desenvolvedor Front-End',
+      company: 'Freelancer remoto',
+      location: 'Linhares, ES',
+      period: '2026',
+      points: [
+        'Evolução e manutenção de aplicação web, com refatorações, correções e melhorias de responsividade.',
+        'Implementação de interfaces a partir do Figma e uso de agentes de IA em análise, desenvolvimento, revisão e validação de código.'
       ]
     },
     {
@@ -243,9 +255,9 @@ export class HomeComponent {
   ];
 
   readonly education = [
-    { title: 'Bacharelado em Ciência da Computação', institution: 'Descomplica', period: '2025 – 2029' },
-    { title: 'Curso Técnico em Desenvolvimento de Sistemas', institution: 'SENAI Brasil', period: '2024 – 2025' },
-    { title: 'Curso de PHP', institution: 'SENAI Brasil', period: '2025' }
+    { title: 'Bacharelado em Engenharia de Software', institution: 'Instituto INFNET', location: 'Remoto', period: '2026 – 2030' },
+    { title: 'Curso Técnico em Desenvolvimento de Sistemas', institution: 'SENAI', location: 'Brasil', period: '2024 – 2025' },
+    { title: 'Curso de PHP', institution: 'SENAI', location: 'Brasil', period: '2025' }
   ];
 
   readonly softSkills = ['Comunicação', 'Trabalho em equipe', 'Empatia', 'Aprendizado rápido', 'Adaptabilidade'];

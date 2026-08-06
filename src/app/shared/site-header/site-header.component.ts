@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { LanguageService } from '../language.service';
 
 @Component({
   selector: 'app-site-header',
@@ -8,4 +9,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './site-header.component.html',
   styleUrl: './site-header.component.scss'
 })
-export class SiteHeaderComponent {}
+export class SiteHeaderComponent {
+  readonly language = inject(LanguageService);
+}

@@ -1,6 +1,7 @@
 import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { LanguageService } from '../../shared/language.service';
 
 type Section = 'blog' | 'code';
 
@@ -50,6 +51,7 @@ const entries: Entry[] = [
   styleUrl: './writing.component.scss'
 })
 export class WritingComponent {
+  readonly language = inject(LanguageService);
   private readonly route = inject(ActivatedRoute);
   private readonly params = toSignal(this.route.paramMap, { initialValue: this.route.snapshot.paramMap });
   private readonly data = toSignal(this.route.data, { initialValue: this.route.snapshot.data });
@@ -68,6 +70,6 @@ export class WritingComponent {
   });
 
   readonly heading = computed(() => this.section() === 'blog'
-    ? 'Pensamentos ainda em construção.'
-    : 'Anotações de Engenharia de Software.');
+    ? this.language.text('Pensamentos ainda em construção.')
+    : this.language.text('Anotações de Engenharia de Software.'));
 }

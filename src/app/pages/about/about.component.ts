@@ -1,5 +1,6 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { LanguageService } from '../../shared/language.service';
 
 @Component({
   selector: 'app-about',
@@ -9,6 +10,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './about.component.scss'
 })
 export class AboutComponent {
+  readonly language = inject(LanguageService);
   @ViewChild('favoriteSong') private favoriteSong?: ElementRef<HTMLAudioElement>;
 
   readonly waveBars = Array.from({ length: 18 });

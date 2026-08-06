@@ -1,12 +1,15 @@
 <header class="site-header">
   <div class="header-inner">
     <a class="wordmark" routerLink="/">Marcos Menezes (Info.)</a>
-    <nav aria-label="Navegação principal">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Projetos</a>
-      <a routerLink="/about" routerLinkActive="active">Sobre</a>
-      <a routerLink="/photography" routerLinkActive="active">Fotografias</a>
+    <nav [attr.aria-label]="language.text('Navegação principal')">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{ language.text('Projetos') }}</a>
+      <a routerLink="/about" routerLinkActive="active">{{ language.text('Sobre') }}</a>
+      <a routerLink="/photography" routerLinkActive="active">{{ language.text('Fotografias') }}</a>
       <a routerLink="/blog" routerLinkActive="active">Blog</a>
-      <a routerLink="/code" routerLinkActive="active">Caderno</a>
+      <a routerLink="/code" routerLinkActive="active">{{ language.text('Caderno') }}</a>
     </nav>
+    <button class="language-toggle" type="button" (click)="language.toggle()">
+      {{ language.isEnglish() ? 'English → Português' : 'Português → English' }}
+    </button>
   </div>
 </header>

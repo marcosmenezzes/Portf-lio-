@@ -2,11 +2,11 @@
   <main>
     <section class="intro" id="home">
     
-      <h1>As máquinas me surpreendem muito frequentemente.</h1>
+      <h1>{{ language.text('As máquinas me surpreendem muito frequentemente.') }}</h1>
       <p class="kicker">- Alan Turing</p>
-      <p class="lead">{{ profile.summary }}</p>
+      <p class="lead">{{ language.text(profile.summary) }}</p>
       <div class="links">
-        <a [href]="'mailto:' + profile.email">Vamos conversar <span>↗</span></a>
+        <a [href]="'mailto:' + profile.email">{{ language.text('Vamos conversar') }} <span>↗</span></a>
         <a [href]="profile.github" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
         <a [href]="profile.linkedin" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a>
       </div>
@@ -14,19 +14,19 @@
 
     <section class="now" id="now">
       <div>
-        <p class="label">Agora</p>
-        <p>Aberto a oportunidades e projetos em Angular, React, backend .NET, APIs e aplicações web.</p>
+        <p class="label">{{ language.text('Agora') }}</p>
+        <p>{{ language.text('Aberto a oportunidades e projetos em Angular, React, backend .NET, APIs e aplicações web.') }}</p>
       </div>
       <div>
-        <p class="label">Base</p>
-        <p>{{ profile.location }} · Inglês C1 · Ciência da Computação</p>
+        <p class="label">{{ language.text('Base') }}</p>
+        <p>{{ profile.location }} · {{ language.text('Inglês C1 · Ciência da Computação') }}</p>
       </div>
     </section>
 
     <section class="section" id="projects">
       <div class="section-heading">
-        <p class="label">Projetos selecionados</p>
-        <a [href]="profile.github" target="_blank" rel="noreferrer">Ver todos no GitHub ↗</a>
+        <p class="label">{{ language.text('Projetos selecionados') }}</p>
+        <a [href]="profile.github" target="_blank" rel="noreferrer">{{ language.text('Ver todos no GitHub ↗') }}</a>
       </div>
 
       <div class="project-list">
@@ -36,32 +36,32 @@
               <div class="project-title">
                 <span class="project-number">{{ (projects.indexOf(project) + 1).toString().padStart(2, '0') }}</span>
                 <div>
-                  <h2>{{ project.title }}</h2>
-                  <p>{{ project.category }}</p>
+                  <h2>{{ language.text(project.title) }}</h2>
+                  <p>{{ language.text(project.category) }}</p>
                 </div>
               </div>
-              <p class="project-summary">{{ project.summary }}</p>
+              <p class="project-summary">{{ language.text(project.summary) }}</p>
               <div class="tags">
-                @for (tag of project.tags; track tag) { <span>{{ tag }}</span> }
+                @for (tag of project.tags; track tag) { <span>{{ language.text(tag) }}</span> }
               </div>
             </div>
             <div class="project-actions">
               <button type="button" (click)="selectProject(project.slug)" [attr.aria-expanded]="selectedProject().slug === project.slug">
-                {{ selectedProject().slug === project.slug ? 'Fechar' : 'Detalhes' }}
+                {{ language.text(selectedProject().slug === project.slug ? 'Fechar' : 'Detalhes') }}
               </button>
-              <a [href]="project.link" target="_blank" rel="noreferrer" aria-label="Abrir projeto no GitHub">↗</a>
+              <a [href]="project.link" target="_blank" rel="noreferrer" [attr.aria-label]="language.text('Abrir projeto no GitHub')">↗</a>
             </div>
             <div class="project-details">
               <div>
-                <h3>{{ project.headline }}</h3>
-                <p>{{ project.description }}</p>
+                <h3>{{ language.text(project.headline) }}</h3>
+                <p>{{ language.text(project.description) }}</p>
                 <ul>
-                  @for (point of project.points; track point) { <li>{{ point }}</li> }
+                  @for (point of project.points; track point) { <li>{{ language.text(point) }}</li> }
                 </ul>
                 @if (project.gallery; as gallery) {
                   <div class="gallery">
                     @for (image of gallery; track image.src) {
-                      <button type="button" (click)="openGalleryImage(image)"><img [src]="image.src" [alt]="image.alt" /></button>
+                      <button type="button" (click)="openGalleryImage(image)"><img [src]="image.src" [alt]="language.text(image.alt)" /></button>
                     }
                   </div>
                 }
@@ -73,40 +73,40 @@
     </section>
 
     <section class="section compact-section" id="stack">
-      <div class="section-heading"><p class="label">Ferramentas</p></div>
+      <div class="section-heading"><p class="label">{{ language.text('Ferramentas') }}</p></div>
       <p class="tool-list">Angular · React · TypeScript · C# · .NET · PHP · Python · SQL · Azure · Git</p>
     </section>
 
     <section class="section" id="experience">
-      <div class="section-heading"><p class="label">Experiência</p></div>
+      <div class="section-heading"><p class="label">{{ language.text('Experiência') }}</p></div>
       <div class="experience-list">
         @for (job of experiences; track job.company + job.role) {
           <article>
             <p class="period">{{ job.period }}</p>
-            <div><h2>{{ job.role }}</h2><p>{{ job.company }} · {{ job.location }}</p></div>
+            <div><h2>{{ language.text(job.role) }}</h2><p>{{ language.text(job.company) }} · {{ job.location }}</p></div>
           </article>
         }
       </div>
     </section>
 
     <section class="section education-row">
-      <div class="section-heading"><p class="label">Formação</p></div>
+      <div class="section-heading"><p class="label">{{ language.text('Formação') }}</p></div>
       <div>
-        @for (item of education; track item.title) { <p><strong>{{ item.title }}</strong><br>{{ item.institution }} · {{ item.period }}</p> }
+        @for (item of education; track item.title) { <p><strong>{{ language.text(item.title) }}</strong><br>{{ item.institution }} · {{ language.text(item.location) }} · {{ item.period }}</p> }
       </div>
     </section>
   </main>
 
   <footer id="contact">
-    <p class="label">Contato</p>
+    <p class="label">{{ language.text('Contato') }}</p>
     <a class="email" [href]="'mailto:' + profile.email">{{ profile.email }} ↗</a>
     <div class="footer-bottom"><span>© {{ currentYear }} Marcos Menezes</span><a [href]="profile.github" target="_blank" rel="noreferrer">GitHub ↗</a></div>
   </footer>
 
   @if (activeGalleryImage(); as image) {
     <div class="gallery-modal" (click)="closeGalleryImage()">
-      <button type="button" (click)="$event.stopPropagation(); closeGalleryImage()">Fechar</button>
-      <img [src]="image.src" [alt]="image.alt" (click)="$event.stopPropagation()" />
+      <button type="button" (click)="$event.stopPropagation(); closeGalleryImage()">{{ language.text('Fechar') }}</button>
+      <img [src]="image.src" [alt]="language.text(image.alt)" (click)="$event.stopPropagation()" />
     </div>
   }
 </div>
