@@ -10,7 +10,7 @@
       <div class="entry-body">
         <p class="intro">{{ language.text(entry.summary) }}</p>
         @for (paragraph of entry.paragraphs; track paragraph) {
-          <p>{{ language.text(paragraph) }}</p>
+          <p [innerHTML]="language.text(paragraph)"></p>
         }
       </div>
 
