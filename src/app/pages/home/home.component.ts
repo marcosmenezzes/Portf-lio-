@@ -91,6 +91,46 @@ export class HomeComponent {
 
   readonly projects: Project[] = [
     {
+      slug: 'art-twin',
+      title: 'Art Twin',
+      category: 'IA e visão computacional',
+      summary: 'Encontra seu gêmeo artístico comparando uma foto com obras do Metropolitan Museum of Art.',
+      headline: 'Uma busca visual por seu retrato na história da arte.',
+      description:
+        'Aplicação full stack que compara a foto enviada com pinturas e esculturas de domínio público do acervo do Met, sem armazenar a imagem.',
+      previewLabel: 'DINOv2 + Angular + .NET',
+      tags: ['Angular', 'ASP.NET Core', 'DINOv2', 'CLIP'],
+      points: [
+        'Busca por similaridade usando embeddings DINOv2 e CLIP combinados com informação espacial de cor.',
+        'Acervo com 3.000 obras públicas obtidas pela API do Metropolitan Museum of Art.',
+        'Upload validado e processado somente em memória, sem cadastro ou armazenamento da fotografia.'
+      ],
+      metrics: [],
+      link: 'https://github.com/marcosmenezzes/Art-twin',
+      showcaseLink: 'https://art-twin.vercel.app/#/',
+      showcaseLabel: 'Experimentar Art Twin'
+    },
+    {
+      slug: 'platelens',
+      title: 'PlateLens',
+      category: 'Visão computacional',
+      summary: 'Controle de acesso veicular com detecção e leitura em tempo real de placas brasileiras.',
+      headline: 'Visão computacional aplicada ao controle de acesso veicular.',
+      description:
+        'Sistema local que captura imagens de câmeras, detecta placas com YOLO, reconhece caracteres com Apple Vision e registra entradas e saídas em tempo real.',
+      previewLabel: 'YOLO + OCR + .NET + React',
+      tags: ['YOLO', 'Apple Vision', 'ASP.NET Core', 'React'],
+      points: [
+        'Reconhecimento dos padrões brasileiro antigo e Mercosul.',
+        'Painel com veículos, histórico, monitoramento e indicadores operacionais.',
+        'Atualizações em tempo real com SSE e persistência local em SQLite.'
+      ],
+      metrics: [],
+      link: 'https://github.com/marcosmenezzes/PlateLens-LeitorDePlacas',
+      showcaseLink: 'https://lnkd.in/p/dTEp7GWE',
+      showcaseLabel: 'Ver vídeo do PlateLens'
+    },
+    {
       slug: 'safetylens',
       title: 'Safety Lens',
       category: 'Visão computacional',
@@ -111,9 +151,8 @@ export class HomeComponent {
         { value: 'Indústria', label: 'Contexto de aplicação' }
       ],
       link: 'https://github.com/marcosmenezzes/safetylens.rtsp',
-      showcaseLink:
-        'https://www.linkedin.com/posts/marcosmenezzez_tecnologia-visaetocomputacional-inteligaeanciaartificial-activity-7298772997257986050-z4nz',
-      showcaseLabel: 'Ver publicação com o projeto em funcionamento'
+      showcaseLink: 'https://lnkd.in/p/dcmvSbK9',
+      showcaseLabel: 'Ver vídeo do Safety Lens'
     },
     {
       slug: 'studybuddyhub',

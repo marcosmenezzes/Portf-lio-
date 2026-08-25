@@ -58,6 +58,11 @@
                 <ul>
                   @for (point of project.points; track point) { <li>{{ language.text(point) }}</li> }
                 </ul>
+                @if (project.showcaseLink) {
+                  <a class="project-showcase" [href]="project.showcaseLink" target="_blank" rel="noreferrer">
+                    {{ language.text(project.showcaseLabel ?? 'Ver demonstração') }} ↗
+                  </a>
+                }
                 @if (project.gallery; as gallery) {
                   <div class="gallery">
                     @for (image of gallery; track image.src) {
