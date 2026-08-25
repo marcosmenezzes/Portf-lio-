@@ -103,7 +103,7 @@ const english: Record<string, string> = {
   'fotografias': 'photography',
   'ou abrir meu': 'or open my',
   'currículo': 'résumé',
-  'Quer conversar sobre trabalho, tecnologia, animes ou fotografia?': 'Want to talk about work, technology, anime, or photography?',
+  'Para oportunidades profissionais, projetos ou outras informações, entre em contato.': 'For professional opportunities, projects, or further information, please get in touch.',
   'Marcos Menezes diante de um espelho': 'Marcos Menezes standing in front of a mirror',
   'Oi, esse sou eu.': 'Hi, this is me.',
   'Pensamentos ainda em construção.': 'Thoughts still under construction.',
