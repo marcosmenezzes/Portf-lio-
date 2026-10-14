@@ -59,7 +59,7 @@ const entries: Entry[] = [
       'Uma lista de funcionalidades não substitui o entendimento do problema. Perguntas sobre usuários, contexto e critérios de aceite transformam pedidos vagos em decisões verificáveis.',
       'Esta área pode receber resumos de aula, referências e exemplos dos meus projetos.'
     ]
-  }
+  },
 
   {
     section: 'code',
